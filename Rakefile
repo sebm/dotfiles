@@ -1,3 +1,8 @@
+zsh_dotfiles = [
+  '.zshenv',
+  '.zshrc'
+]
+
 vim_dotfiles = [
   '.vimrc.after',
   '.vimrc.before',
@@ -18,8 +23,19 @@ namespace :backup_dotfiles do
     end
   end
 
+  desc "Backup zsh dotfiles to repository"
+  task :zsh do
+    zsh_dotfiles.each do |f|
+      path_to_dotfile = File.expand_path(File.join('~', f))
+
+      if File.file? path_to_dotfile
+        cp path_to_dotfile, File.join(File.dirname(__FILE__), 'zsh', f)
+      end
+    end
+  end
+
   desc "Backup all dotfiles to repository"
-  task :all => [:vim] do
+  task :all => [:vim, :zsh] do
     puts "Copied all dotfiles to repository"
   end
 end
