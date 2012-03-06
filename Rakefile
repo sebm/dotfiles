@@ -9,29 +9,27 @@ vim_dotfiles = [
   '.gvimrc.after'
 ]
 
+def backup_files(filenames, dest)
+  filenames.each do |f|
+    path_to_dotfile = File.expand_path(File.join('~', f))
+
+    if File.file? path_to_dotfile
+      cp path_to_dotfile, File.join(File.dirname(__FILE__), dest, f)
+    end
+  end
+end
+
 namespace :backup_dotfiles do
   task :default => :all
 
   desc "Backup vim dotfiles to repostory"
   task :vim do
-    vim_dotfiles.each do |f|
-      path_to_dotfile = File.expand_path(File.join('~', f))
-
-      if File.file? path_to_dotfile
-        cp path_to_dotfile, File.join(File.dirname(__FILE__), 'vim', f)
-      end
-    end
+    backup_files(vim_dotfiles, 'vim')
   end
 
   desc "Backup zsh dotfiles to repository"
   task :zsh do
-    zsh_dotfiles.each do |f|
-      path_to_dotfile = File.expand_path(File.join('~', f))
-
-      if File.file? path_to_dotfile
-        cp path_to_dotfile, File.join(File.dirname(__FILE__), 'zsh', f)
-      end
-    end
+    backup_files(zsh_dotfiles, 'zsh')
   end
 
   desc "Backup all dotfiles to repository"
