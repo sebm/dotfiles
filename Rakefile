@@ -19,6 +19,38 @@ def backup_files(filenames, dest)
   end
 end
 
+def restore_files(filenames, from_dir)
+  # don't want to restore files if the working copy is dirty
+  dirty_filecount = `git status --porcelain | wc -l`.to_i
+  unless dirty_filecount == 0
+    abort "ERROR: your dotfiles working copy is not clean."
+  end
+
+  filenames.each do |f|
+    path_from = File.join(File.dirname(__FILE__), from_dir, f)
+    path_to = File.expand_path(File.join('~', f))
+    sh "cp #{path_from} #{path_to}"
+  end
+
+end
+
+namespace :restore_dotfiles do
+  desc "Restore zsh dotfiles to home directory"
+  task :zsh do
+    restore_files(zsh_dotfiles, 'zsh')
+  end
+
+  desc "Restore vim dotfiles to home directory"
+  task :vim do
+    restore_files(vim_dotfiles, 'vim')
+  end
+
+  desc "Restore all dotfiles to home directory"
+  task :all => [:vim, :zsh] do
+    puts "Restored all dotfiles to home directory"
+  end
+end
+
 namespace :backup_dotfiles do
   desc "Backup vim dotfiles to repostory"
   task :vim do
@@ -37,4 +69,6 @@ namespace :backup_dotfiles do
 end
 
 task :backup_dotfiles => "backup_dotfiles:all"
+task :restore_dotfiles => "restore_dotfiles:all"
+
 
