@@ -1,4 +1,7 @@
 au BufRead,BufNewFile *.hquery    set filetype=ruby
+set wildmenu
+set wildmode=longest
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
