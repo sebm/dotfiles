@@ -7,10 +7,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -34,6 +30,7 @@ plugins=(git rails brew ruby bundler node npm rake rbenv)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+export NODE_PATH=/usr/local/lib/node_modules
 bindkey -v
 export PATH=$HOME/.rbenv/shims:/usr/local/share/python:/usr/local/bin/:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export EDITOR=/usr/bin/vim
