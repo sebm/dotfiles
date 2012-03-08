@@ -20,8 +20,6 @@ def backup_files(filenames, dest)
 end
 
 namespace :backup_dotfiles do
-  task :default => :all
-
   desc "Backup vim dotfiles to repostory"
   task :vim do
     backup_files(vim_dotfiles, 'vim')
