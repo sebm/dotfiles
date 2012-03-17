@@ -33,7 +33,6 @@ source $ZSH/oh-my-zsh.sh
 export NODE_PATH=/usr/local/lib/node_modules
 bindkey -v
 export PATH=$HOME/.rbenv/shims:/usr/local/share/python:/usr/local/bin/:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin
-export EDITOR=/usr/bin/vim
 
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
@@ -41,3 +40,4 @@ function precmd () {
 }
 
 alias vim='mvim -v'
+export EDITOR='mvim -v'
