@@ -39,3 +39,5 @@ export EDITOR=/usr/bin/vim
 function precmd () {
  z --add "$(pwd -P)"
 }
+
+alias vim='mvim -v'
