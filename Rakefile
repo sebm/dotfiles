@@ -9,6 +9,10 @@ vim_dotfiles = [
   '.gvimrc.after'
 ]
 
+tmux_dotfiles = [
+  '.tmux.conf'
+]
+
 def backup_files(filenames, dest)
   filenames.each do |f|
     path_to_dotfile = File.expand_path(File.join('~', f))
@@ -45,8 +49,13 @@ namespace :restore_dotfiles do
     restore_files(vim_dotfiles, 'vim')
   end
 
+  desc "Restore tmux dotfiles to home directory"
+  task :tmux do
+    restore_files(tmux_dotfiles, 'tmux')
+  end
+
   desc "Restore all dotfiles to home directory"
-  task :all => [:vim, :zsh] do
+  task :all => [:vim, :zsh, :tmux] do
     puts "Restored all dotfiles to home directory"
   end
 end
@@ -62,8 +71,13 @@ namespace :backup_dotfiles do
     backup_files(zsh_dotfiles, 'zsh')
   end
 
+  desc "Backup tmux dotfiles to repository"
+  task :tmux do
+    backup_files(tmux_dotfiles, 'tmux')
+  end
+
   desc "Backup all dotfiles to repository"
-  task :all => [:vim, :zsh] do
+  task :all => [:vim, :zsh, :tmux] do
     puts "Copied all dotfiles to repository"
   end
 end
