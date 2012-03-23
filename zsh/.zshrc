@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export NODE_PATH=/usr/local/lib/node_modules
 bindkey -v
-export PATH=$HOME/.rbenv/shims:/usr/local/share/python:/usr/local/bin/:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin
+export PATH=$HOME/.rbenv/shims:/usr/local/share/python:/usr/local/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin
 
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
