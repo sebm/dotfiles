@@ -1,4 +1,4 @@
 
 set gfn=Consolas:h15
-color molokai
+color solarized
 set guioptions-=T
