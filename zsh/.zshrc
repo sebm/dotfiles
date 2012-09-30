@@ -30,8 +30,6 @@ plugins=(git rails brew ruby bundler node npm rake rbenv)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-bindkey -v
-
 . `brew --prefix`/etc/profile.d/z.sh
 function precmd () {
  z --add "$(pwd -P)"

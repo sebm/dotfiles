@@ -1,6 +1,5 @@
 
 set gfn=Consolas:h15
 set background=dark
-color solarized
-let g:solarized_contrast="high"
+color jellybeans
 set guioptions-=T
